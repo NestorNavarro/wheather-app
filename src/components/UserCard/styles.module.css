@@ -1,0 +1,13 @@
+.userCard {
+    cursor: pointer;
+    background-color: white;
+    padding: 1rem;
+}
+
+.userCard:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+.userCard:active {
+    transform: translateY(3px);
+}
