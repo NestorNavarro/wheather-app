@@ -4,8 +4,9 @@ import { configureStore }  from "@reduxjs/toolkit";
 import { setupListeners }  from "@reduxjs/toolkit/query";
 
 // Import Own Components
-import { userApi } from "./api/userApi";
-import * as Slices from "./slice";
+import { userApi  }    from "./api/userApi";
+import { weatherApi  } from "./api/weatherApi";
+import * as Slices     from "./slice";
 
 const rootReducer    = combineReducers({
 	...Object.entries(Slices).reduce(
@@ -15,7 +16,8 @@ const rootReducer    = combineReducers({
 		}),
 		{}
 	),
-	[userApi.reducerPath] : userApi.reducer,
+	[userApi.reducerPath]    : userApi.reducer,
+	[weatherApi.reducerPath] : weatherApi.reducer,
 });
 
 
