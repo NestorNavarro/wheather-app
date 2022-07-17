@@ -3,15 +3,16 @@ import { useSelector, shallowEqual } from "react-redux";
 import { Panel } from "rsuite";
 //api
 import { weatherApi } from "store/api/weatherApi";
+//our components
+import ForecastDays from "components/ForecastDays";
 
 const UserDetailsPage = () => {
 
 	const { userSlice } = useSelector( state => state, shallowEqual);
 
 
-	const { data : weatherInfo } = weatherApi.useGetDataQuery({ params : { query : `${userSlice?.lat}, ${userSlice?.lon}` }});
+	const { data : weatherInfo } = weatherApi.useGetDataQuery({ module : "current", params : { query : `${userSlice?.lat},${userSlice?.lon}`, forecast_days : 5 } });
 
-	console.log(weatherInfo);
 
 	return (
 		<Panel className="bg-white p-3" shaded bordered bodyFill>
@@ -61,7 +62,7 @@ const UserDetailsPage = () => {
 					</div>
 				</div>
 			</div>
-
+			<ForecastDays />
 		</Panel>
 	);
 };
